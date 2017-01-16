@@ -1,49 +1,36 @@
 import string
 
-def term2Norm(srcPath, srcFile, targFile):
-    sentc = ''
-    sentt = ''
+def termNorm(srcPath, srcFile, tarFile):
+    src_sent = ''
+    tar_sent = ''
     src = open(srcFile, 'w')
-    tar = open(targFile, 'w')
+    tar = open(tarFile, 'w')
     punc = string.punctuation
     for line in open(srcPath, 'r'):
         if len(line.strip()) > 1:
             str = line.strip().split('\t')
-            if len(sentc) == 0:
-                sentc = str[0]
-                sentt = str[2]                
+            if len(src_sent) == 0:
+                src_sent = str[0]
+                tar_sent = str[2]                
             else:
                 if str[0] in punc:
-                    sentc = sentc
-                    sentt = sentt
+                    src_sent = src_sent
+                    tar_sent = tar_sent
                 else:
-                    sentc = sentc + " " + str[0]
-                    sentt = sentt + " " + str[2]
+                    src_sent = src_sent + " " + str[0]
+                    tar_sent = tar_sent + " " + str[2]
         if len(line.strip()) == 0:
-            #sentc = sentc.replace(' !!', '!!')
-            #sentc = sentc.replace(' ..', '..')
-            #sentc = sentc.replace(' ...', '...')
-            #sentt = sentt.replace(' !!', '!!')
-            #sentt = sentt.replace(' ..', '..')
-            #sentt = sentt.replace(' ...', '...')
-            print(sentc)
-            print(sentt)
-            src.write(sentc + ' \n')
-            tar.write(sentt + ' \n')
-            sentc = ''
-            sentt = ''
+            print(src_sent)
+            print(tar_sent)
+            src.write(src_sent + ' \n')
+            tar.write(tar_sent + ' \n')
+            src_sent = ''
+            tar_sent = ''
         
 if __name__ == '__main__':
-    linux = '/home/hjp/Workshop/Model/'
-    mac = '/Users/hjp/Workspace/Workshop/Model/'
-    os = 'MAC' # MAC or LINUX
-    if os == 'MAC':
-        srcPath = mac + 'data/norm/test_set_2.txt'
-        srcFile = mac + 'data/tmp/test_set_2_informal.txt'
-        tarFile = mac + 'data/tmp/test_set_2_normalization.txt'
-    else:
-        srcPath = linux + 'data/norm/tweets_normalization_ner.txt'
-        srcFile = linux + 'data/tmp/tweets_normalization_ner_informal.txt'
-        tarFile = linux + 'data/tmp/tweets_normalization_ner_normalization.txt'   
-
-    term2Norm(srcPath, srcFile, tarFile)
+    org = '/Users/hjp/MacBook/data/nom/npos_ii.txt'
+    src = '/Users/hjp/MacBook/data/tmp/npos_ii_inf.txt'
+    tar = '/Users/hjp/MacBook/data/tmp/npos_ii_nom.txt'
+    
+    termNorm(org, src, tar)
+   
