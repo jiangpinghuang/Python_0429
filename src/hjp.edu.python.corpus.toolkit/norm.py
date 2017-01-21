@@ -3,8 +3,8 @@ import string
 def termNorm(srcPath, srcFile, tarFile):
     src_sent = ''
     tar_sent = ''
-    src = open(srcFile, 'w')
-    tar = open(tarFile, 'w')
+    src = open(srcFile, 'a')
+    tar = open(tarFile, 'a')
     punc = string.punctuation
     for line in open(srcPath, 'r'):
         if len(line.strip()) > 1:
@@ -28,9 +28,9 @@ def termNorm(srcPath, srcFile, tarFile):
             tar_sent = ''
         
 if __name__ == '__main__':
-    org = '/Users/hjp/MacBook/data/nom/npos_ii.txt'
-    src = '/Users/hjp/MacBook/data/tmp/npos_ii_inf.txt'
-    tar = '/Users/hjp/MacBook/data/tmp/npos_ii_nom.txt'
+    org = '/Users/hjp/MacBook/data/nom/tnn.txt'
+    src = '/Users/hjp/MacBook/data/tmp/src-train.txt'
+    tar = '/Users/hjp/MacBook/data/tmp/tar-train.txt'
     
     termNorm(org, src, tar)
    
