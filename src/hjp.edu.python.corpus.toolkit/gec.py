@@ -51,8 +51,8 @@ def genSent(inFile, srcFile, tarFile):
             ann = False
             
 if __name__ == '__main__':
-    inFile = '/Users/hjp/Downloads/gec.txt'
-    srcFile = '/Users/hjp/Downloads/srcFile.txt'
-    tarFile = '/Users/hjp/Downloads/tarFile.txt'
+    inFile = '/Users/hjp/Downloads/valid.txt'
+    srcFile = '/Users/hjp/Downloads/src-valid.txt'
+    tarFile = '/Users/hjp/Downloads/tar-valid.txt'
     genSent(inFile, srcFile, tarFile)    
     
